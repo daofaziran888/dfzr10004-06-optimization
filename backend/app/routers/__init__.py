@@ -22,5 +22,6 @@ from app.routers import throttle as router_throttle
 from app.routers import tag as router_tag
 from app.routers import version as router_version
 from app.routers import sandbox as router_sandbox
+from app.routers import hotspot as router_hotspot
 
-ROUTERS = [router_taskplan, router_verify, router_pipeline, router_transform, router_dedup, router_retry, router_audit, router_compliance, router_proxy, router_storage, router_alert, router_report, router_throttle, router_tag, router_version, router_sandbox]
+ROUTERS = [router_taskplan, router_verify, router_pipeline, router_transform, router_dedup, router_retry, router_audit, router_compliance, router_proxy, router_storage, router_alert, router_report, router_throttle, router_tag, router_version, router_sandbox, router_hotspot]

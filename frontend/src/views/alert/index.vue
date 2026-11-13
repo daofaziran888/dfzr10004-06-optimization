@@ -70,7 +70,7 @@ import { request } from '@/api/client'
 type Row = Record<string, string | number | null>
 
 const ENDPOINT = '/api/alert'
-const columns = ["规则编号", "监控指标", "告警级别", "触发条件", "通知渠道", "静默时间", "升级策略", "是否启用"]
+const columns = ["规则编号", "监控指标", "告警级别", "触发条件", "通知渠道", "静默时间", "升级策略", "是否启用", "来源", "影响节点", "处理状态", "关联批次"]
 const actions = ["提交校验", "启用规则", "停用规则"]
 const statuses = ["草稿", "待校验", "已启用", "已停用"]
 const stats = [{"label": "告警规则总数", "value": 0}, {"label": "待校验告警规则", "value": 0}, {"label": "已启用告警规则", "value": 0}]

@@ -70,7 +70,7 @@ import { request } from '@/api/client'
 type Row = Record<string, string | number | null>
 
 const ENDPOINT = '/api/taskplan'
-const columns = ["计划编号", "目标站点", "采集频率", "数据范围", "优先级", "资源配额", "预计用时", "计划状态"]
+const columns = ["计划编号", "目标站点", "采集频率", "数据范围", "优先级", "资源配额", "预计用时", "计划状态", "链路编号", "受影响批次"]
 const actions = ["启动计划", "暂停计划", "归档计划"]
 const statuses = ["草稿", "运行中", "已暂停", "已完成"]
 const stats = [{"label": "采集计划总数", "value": 0}, {"label": "运行中计划", "value": 0}, {"label": "已暂停计划", "value": 0}]

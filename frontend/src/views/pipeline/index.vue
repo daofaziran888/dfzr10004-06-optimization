@@ -47,6 +47,9 @@
             >
               {{ action }}
             </button>
+            <button v-if="row['节点状态'] === '已暂停'" class="link" type="button" @click="resumeNode(row)">
+              恢复续跑
+            </button>
           </td>
         </tr>
         <tr v-if="!rows.length">
@@ -70,7 +73,7 @@ import { request } from '@/api/client'
 type Row = Record<string, string | number | null>
 
 const ENDPOINT = '/api/pipeline'
-const columns = ["节点编号", "节点名称", "上游节点", "下游节点", "处理耗时", "吞吐速率", "错误数量", "节点状态"]
+const columns = ["节点编号", "节点名称", "链路编号", "上游节点", "下游节点", "处理耗时", "吞吐速率", "错误数量", "节点状态", "等待来源", "已完成区间", "续跑起点"]
 const actions = ["启动节点", "暂停节点", "归档节点"]
 const statuses = ["草稿", "运行中", "已暂停", "已归档"]
 const stats = [{"label": "链路节点总数", "value": 0}, {"label": "运行中节点", "value": 0}, {"label": "已暂停节点", "value": 0}]
@@ -107,6 +110,23 @@ async function runAction(action: string, row: Row) {
     await reload()
   } catch (error) {
     errorMessage.value = error instanceof Error ? error.message : '采集链路监控操作失败'
+  }
+}
+
+async function resumeNode(row: Row) {
+  errorMessage.value = ''
+  try {
+    const response = await request('/api/hotspot/resume', {
+      method: 'POST',
+      body: JSON.stringify({ node_code: row['节点编号'] }),
+    })
+    const payload = await response.json()
+    if (!payload.ok) {
+      throw new Error(payload.message ?? '恢复续跑未生效')
+    }
+    await reload()
+  } catch (error) {
+    errorMessage.value = error instanceof Error ? error.message : '节点恢复失败'
   }
 }
 

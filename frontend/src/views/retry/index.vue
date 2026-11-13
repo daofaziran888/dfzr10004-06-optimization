@@ -70,7 +70,7 @@ import { request } from '@/api/client'
 type Row = Record<string, string | number | null>
 
 const ENDPOINT = '/api/retry'
-const columns = ["规则编号", "异常类型", "重试上限", "退避策略", "冷却时间", "告警阈值", "降级方案", "是否启用"]
+const columns = ["规则编号", "异常类型", "重试上限", "退避策略", "冷却时间", "告警阈值", "降级方案", "是否启用", "失败分类", "关联批次"]
 const actions = ["提交校验", "启用规则", "停用规则"]
 const statuses = ["草稿", "待校验", "已启用", "已停用"]
 const stats = [{"label": "重试规则总数", "value": 0}, {"label": "待校验规则", "value": 0}, {"label": "已启用规则", "value": 0}]

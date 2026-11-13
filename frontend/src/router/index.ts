@@ -17,6 +17,7 @@ const Throttle = () => import('@/views/throttle/index.vue')
 const Tag = () => import('@/views/tag/index.vue')
 const Version = () => import('@/views/version/index.vue')
 const Sandbox = () => import('@/views/sandbox/index.vue')
+const Hotspot = () => import('@/views/hotspot/index.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -38,6 +39,7 @@ const router = createRouter({
     { path: '/tag', name: 'tag', component: Tag },
     { path: '/version', name: 'version', component: Version },
     { path: '/sandbox', name: 'sandbox', component: Sandbox },
+    { path: '/hotspot', name: 'hotspot', component: Hotspot },
   ],
 })
 
